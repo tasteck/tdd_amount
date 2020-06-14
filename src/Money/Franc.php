@@ -3,10 +3,8 @@ declare(strict_types=1);
 
 namespace App\Money;
 
-class Franc
+class Franc extends Money
 {
-    private $value;
-
     public function __construct(int $value)
     {
         $this->value = $value;
@@ -20,23 +18,5 @@ class Franc
     final public function times(int $int): Franc
     {
         return new Franc($this->value * $int);
-    }
-
-    /**
-     * @return int
-     */
-    final public function getValue(): int
-    {
-        return $this->value;
-    }
-
-    /**
-     * @param Franc $dollar
-     *
-     * @return bool
-     */
-    final public function equals(Franc $dollar): bool
-    {
-        return $this->value === $dollar->getValue();
     }
 }
