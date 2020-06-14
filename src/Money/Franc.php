@@ -5,11 +5,6 @@ namespace App\Money;
 
 class Franc extends Money
 {
-    public function __construct(int $value)
-    {
-        $this->value = $value;
-    }
-
     /**
      * @param int $int
      *
@@ -17,6 +12,6 @@ class Franc extends Money
      */
     final public function times(int $int): Money
     {
-        return new Franc($this->value * $int);
+        return Money::franc($this->value * $int);
     }
 }
