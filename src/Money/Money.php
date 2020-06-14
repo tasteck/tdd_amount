@@ -9,7 +9,8 @@ class Money
 
     final public function equals(Money $money): bool
     {
-        return $this->value === $money->getValue();
+        return $this->value === $money->getValue()
+            && get_class($this) === get_class($money);
     }
 
     /**
