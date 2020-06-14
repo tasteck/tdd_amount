@@ -14,10 +14,12 @@ class Dollar
 
     /**
      * @param int $int
+     *
+     * @return Dollar
      */
-    public function times(int $int)
+    public function times(int $int): Dollar
     {
-        $this->amount *= $int;
+        return new Dollar($this->amount * $int);
     }
 
     /**
