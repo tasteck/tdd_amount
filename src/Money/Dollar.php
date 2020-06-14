@@ -5,11 +5,11 @@ namespace App\Money;
 
 class Dollar
 {
-    public $amount;
+    public $value;
 
-    public function __construct(int $amount)
+    public function __construct(int $value)
     {
-        $this->amount = $amount;
+        $this->value = $value;
     }
 
     /**
@@ -17,16 +17,26 @@ class Dollar
      *
      * @return Dollar
      */
-    public function times(int $int): Dollar
+    final public function times(int $int): Dollar
     {
-        return new Dollar($this->amount * $int);
+        return new Dollar($this->value * $int);
     }
 
     /**
      * @return int
      */
-    public function getAmount(): int
+    final public function getValue(): int
     {
-        return $this->amount;
+        return $this->value;
+    }
+
+    /**
+     * @param Dollar $dollar
+     *
+     * @return bool
+     */
+    final public function equals(Dollar $dollar): bool
+    {
+        return $this->value === $dollar->getValue();
     }
 }
