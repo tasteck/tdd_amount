@@ -15,7 +15,7 @@ class Dollar extends Money
      *
      * @return Dollar
      */
-    final public function times(int $int): Dollar
+    final public function times(int $int): Money
     {
         return new Dollar($this->value * $int);
     }
