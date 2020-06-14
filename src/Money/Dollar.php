@@ -5,7 +5,7 @@ namespace App\Money;
 
 class Dollar
 {
-    public $value;
+    private $value;
 
     public function __construct(int $value)
     {
