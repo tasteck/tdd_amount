@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace App\Tests\Money;
 
+use App\Money\Bank;
 use App\Money\Money;
 use PHPUnit\Framework\TestCase;
 
@@ -22,10 +23,18 @@ class MoneyTest extends TestCase
         $this->assertFalse((Money::dollar(5))->equals(Money::franc(5)));
     }
 
-
     public function testCurrency(): void
     {
         $this->assertSame('USD', Money::dollar(1)->currency());
         $this->assertSame('CHF', Money::franc(1)->currency());
+    }
+
+    final public function testSimpleAddition(): void
+    {
+        $five    = Money::dollar(5);
+        $sum     = $five->plus($five);
+        $bank    = new Bank();
+        $reduced = $bank->reduce($sum, 'USD');
+        $this->assertEquals(Money::dollar(10), $reduced);
     }
 }

@@ -3,13 +3,12 @@ declare(strict_types=1);
 
 namespace App\Money;
 
-class Money
+class Money implements Expression
 {
+    /** @var int  */
     protected $value;
 
-    /**
-     * @var string
-     */
+    /** @var string  */
     protected $currency;
 
     public function __construct(int $value, string $currency)
@@ -68,5 +67,15 @@ class Money
     final public function getValue(): int
     {
         return $this->value;
+    }
+
+    /**
+     * @param Money $money
+     *
+     * @return Expression
+     */
+    final public function plus(Money $money): Expression
+    {
+        return new Money($this->value + $money->value, $this->currency);
     }
 }
